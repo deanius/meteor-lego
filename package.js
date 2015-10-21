@@ -1,37 +1,25 @@
 
 Package.describe({
   summary: "A simple tool to define/require modules with dependencies",
-  version: "0.10.0",
-  name: "mrt:define",
-  git: "https://github.com/apendua/require.git"
+  version: "0.1.0",
+  name: "deanius:lego",
+  git: "https://github.com/deanius/meteor-lego.git"
 });
 
-Package.on_use(function (api) {
-  if (api.versionsFrom) {
-    api.versionsFrom("METEOR@0.9.0");
-  }
+Package.onUse(function (api) {
+  api.versionsFrom("METEOR@1.1.0.3");
 
-  api.use(['deps', 'underscore', 'amd:manager@0.0.5'], ['client', 'server']);
-  
-  api.add_files([
+  api.use(["tracker", "underscore", "amd:manager@0.2.0"]);
 
-    'require.js',
+  api.addFiles("shared/lego.js", ["client", "server"]);
 
-  ], ['client', 'server']);
-
-  if (api.export !== undefined) {
-    api.export('define', ['client', 'server']);
-    api.export('require', ['client', 'server']);
-  }
+  api.export("define", ["client", "server"]);
+  api.export("require", ["client", "server"]);
 });
 
 
-Package.on_test(function (api) {
-  // ENVIRONMENT
-  api.use(['amd:manager@0.0.5', 'tinytest'], ['client', 'server']);
+Package.onTest(function (api) {
+  api.use(["amd:manager@0.2.0", "tinytest"]);
 
-  // TESTS
-  api.add_files([
-    'tests.js',
-  ], 'client');
+  api.add_files("tests/shared/tests.js");
 });

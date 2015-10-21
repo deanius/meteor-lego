@@ -1,6 +1,4 @@
-// TODO: write tests for require/define features rather than AMDManager :P
-
-Tinytest.add('Require - simple define/require routine', function (test) {
+Tinytest.add('Lego - simple define/require routine', function (test) {
 
   var manager = new AMDManager(),
       require = manager.require,
@@ -21,7 +19,7 @@ Tinytest.add('Require - simple define/require routine', function (test) {
 
 });
 
-Tinytest.add('Require - relative paths', function (test) {
+Tinytest.add('Lego - relative paths', function (test) {
 
   var manager = new AMDManager(),
       require = manager.require,
@@ -58,7 +56,7 @@ Tinytest.add('Require - relative paths', function (test) {
 });
 
 
-Tinytest.add('Require - module not found', function (test) {
+Tinytest.add('Lego - module not found', function (test) {
 
   var manager = new AMDManager({
         onModuleNotFound: function () {
@@ -84,7 +82,7 @@ Tinytest.add('Require - module not found', function (test) {
 });
 
 
-Tinytest.add('Require - circular dependencies', function (test) {
+Tinytest.add('Lego - circular dependencies', function (test) {
 
   var manager = new AMDManager(),
       require = manager.require,
@@ -110,4 +108,3 @@ Tinytest.add('Require - circular dependencies', function (test) {
   test.equal(loaded, false);
 
 });
-
